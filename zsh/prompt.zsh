@@ -20,9 +20,9 @@ git_dirty() {
   else
     if [[ $($git status --porcelain) == "" ]]
     then
-      echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
+      echo "(%{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%})"
     else
-      echo "on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
+      echo "(%{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%})"
     fi
   fi
 }
@@ -50,15 +50,17 @@ directory_name() {
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
-get_hostname() {
+host() {
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    hostname -s
+    echo $(uname -n)
   fi
+
 }
 
-export PROMPT=$'\n$(get_hostname)in $(directory_name) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'\n$(directory_name) $(git_dirty)$(need_push)› '
+
 set_prompt () {
-  export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
+  export RPROMPT="%{$fg_bold[cyan]%}$(host)%{$reset_color%}"
 }
 
 precmd() {

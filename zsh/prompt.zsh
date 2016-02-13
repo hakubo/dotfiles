@@ -50,13 +50,13 @@ directory_name() {
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
-hostname() {
+get_hostname() {
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     hostname -s
   fi
 }
 
-export PROMPT=$'\n$(hostname)in $(directory_name) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'\n$(get_hostname)in $(directory_name) $(git_dirty)$(need_push)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }

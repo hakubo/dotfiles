@@ -1,6 +1,9 @@
 # Local/private config goes in the include
 [include]
         path = ~/.gitconfig.local
+[user]
+	    name = Jakub Olek
+		email = bukaj.kelo+github@gmail.com
 [hub]
         protocol = https
 [alias]
@@ -9,6 +12,14 @@
         wtf     = !$ZSH/bin/git-wtf
         rank-contributors = !$ZSH/bin/git-rank-contributors
         count   = !git shortlog -sn
+        cma = commit -am
+        ci = commit
+        co = checkout
+        st = status
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        mg = merge --no-ff
+        pl = pull --rebase
+        delete-merged-branches = "!f() { git checkout --quiet master && git branch --merged | grep --invert-match '*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
 [color]
         diff = auto
         status = auto
@@ -25,6 +36,8 @@
         prompt = false
 [help]
         autocorrect = 1
+[branch]
+	autosetuprebase = always
 [push]
         # See `git help config` (search for push.default)
         # for more information on different options of the below setting.

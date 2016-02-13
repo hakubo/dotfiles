@@ -3,7 +3,6 @@ cask_args appdir: '/Applications'
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 
-update
 brew 'ack'
 brew 'coreutils'
 brew 'go'
@@ -23,10 +22,13 @@ brew 'spaceman-diff'
 brew 'spark'
 brew 'unrar'
 brew 'wget'
+brew 'faac'
+brew 'imagemagick'
+brew 'siege'
+brew 'nvm'
 
 cask 'firefox'
 cask 'google-chrome'
 cask 'handbrake'
 cask 'slack'
 cask 'vlc'
-upgrade

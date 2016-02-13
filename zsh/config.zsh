@@ -48,3 +48,8 @@ bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
 
 ulimit -S -n 10200
+
+EDITOR='vim'
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/dsa_id"

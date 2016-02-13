@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+
+import sys
+import re
+
+special_line = re.compile('|'.join([
+    '[{}]',       # block starts, ends
+    '@',          # imports, mixins
+    '//',         # line comments //
+    '#',          # line comments #
+    '^\s*$',      # assignments (white space and then $)
+    '^\s*\$',     # only white space
+    '^\s*[/*]',   # block comments (white space and then / or *)
+]))
+
+def sort_css(input):
+    lines = []
+    output = []
+    for line in input.split('\n'):
+        if re.search(special_line, line):
+            output += sorted(lines)
+            lines = []
+            output.append(line)
+        else:
+            lines.append(line)
+    output += lines
+    return '\n'.join(output)
+
+args = sys.argv[1:]
+
+in_place = False
+for i in range(len(args)):
+    if args[i] == '-i':
+        in_place = True
+        args = args[:i] + args[i+1:]
+        break
+
+if len(args) > 0:
+    for arg in args:
+        out = sort_css(open(arg).read())
+        if in_place:
+            open(arg, 'w').write(out)
+        else:
+            sys.stdout.write(out)
+else:
+    sys.stdout.write(sort_css(sys.stdin.read()))

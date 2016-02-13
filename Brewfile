@@ -3,6 +3,7 @@ cask_args appdir: '/Applications'
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 
+update
 brew 'ack'
 brew 'coreutils'
 brew 'go'
@@ -28,3 +29,4 @@ cask 'google-chrome'
 cask 'handbrake'
 cask 'slack'
 cask 'vlc'
+upgrade

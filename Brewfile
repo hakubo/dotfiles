@@ -26,6 +26,7 @@ brew 'faac'
 brew 'imagemagick'
 brew 'siege'
 brew 'nvm'
+brew 'httpie'
 
 cask 'firefox'
 cask 'google-chrome'

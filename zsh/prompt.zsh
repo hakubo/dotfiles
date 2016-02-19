@@ -50,22 +50,10 @@ directory_name() {
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
-host() {
-  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    echo $(uname -n)
-  fi
-
-}
-
 export PROMPT=$'$(directory_name) $(git_dirty)$(need_push)› '
-
-set_prompt () {
-  export RPROMPT="%{$fg_bold[cyan]%}$(host)%{$reset_color%}"
-}
 
 precmd() {
   title "zsh" "%m" "%55<...<%~"
-  set_prompt
 }
 
 

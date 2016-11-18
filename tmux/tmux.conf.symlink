@@ -1,9 +1,4 @@
-set -g utf8
-set-window-option -g utf8 on
-set -g status-right '#h P:#P '
-
-# shorten command delay
-set -sg escape-time 1
+set -g status-right '#{prefix_highlight} #h P:#P '
 
 # lighter status bar
 set -g status-bg "#666666"
@@ -12,23 +7,6 @@ set -g status-left-length 50
 
 # Make the current window the first window
 bind T swap-window -t 1
-
-# increase history limit
-set -g history-limit 100000
-
-# ---------------------
-# Copy & Paste
-# ---------------------
-# provide access to the clipboard for pbpaste, pbcopy
-#set-option -g default-command "reattach-to-user-namespace -l zsh"
-#set-window-option -g automatic-rename on
-
-# update default binding of 'Enter' to also use copy-pipe
-#unbind -t vi-copy Enter
-#bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
-
-#bind y run 'tmux save-buffer - | reattach-to-user-namespace pbcopy '
-#bind C-y run 'tmux save-buffer - | reattach-to-user-namespace pbcopy '
 
 # 0 is too far from ` ;)
 set -g base-index 1
@@ -42,25 +20,31 @@ unbind %
 
 # remap prefix to Control + a
 set -g prefix C-a
-# bind 'C-a C-a' to type 'C-a'
-bind -r C-a send-prefix
-unbind C-b
 
 # Enable mouse control (clickable windows, panes, resizable panes)
-# set -g mouse on
+set -g mouse on
 
 # Shift arrow to switch windows
 bind -n S-Left  previous-window
 bind -n S-Right next-window
 
 # switch panes using Shift-Alt-arrow without prefix
-bind -n S-M-Left select-pane -L
-bind -n S-M-Right select-pane -R
-bind -n S-M-Up select-pane -U
-bind -n S-M-Down select-pane -D
+bind -n S-C-Left select-pane -L
+bind -n S-C-Right select-pane -R
+bind -n S-C-Up select-pane -U
+bind -n S-C-Down select-pane -D
 
 # Automatically set window title
 set-window-option -g automatic-rename on
 set-option -g set-titles on
 
-bind-key r source-file ~/.tmux.conf \; display-message ".tmux.conf reloaded"
+#Plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'tmux-plugins/tmux-yank'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'

@@ -1,0 +1,45 @@
+set-option -g status-right "#()"
+set-option -g status-interval 1
+
+# lighter status bar
+set -g status-bg "#666666"
+set -g status-fg "#aaaaaa"
+set -g status-left-length 50
+
+# increase history limit
+set -g history-limit 100000
+
+# 0 is too far from ` ;)
+set -g base-index 1
+setw -g pane-base-index 1
+
+# split panes using | and -
+bind | split-window -h
+bind - split-window -v
+unbind '"'
+unbind %
+
+# remap prefix to Control + a
+set -g prefix C-a
+# bind 'C-a C-a' to type 'C-a'
+bind -r C-a send-prefix
+unbind C-b
+
+# Enable mouse control (clickable windows, panes, resizable panes)
+# set -g mouse on
+
+# Shift arrow to switch windows
+bind -n S-Left  previous-window
+bind -n S-Right next-window
+
+# switch panes using Shift-Alt-arrow without prefix
+bind -n S-M-Left select-pane -L
+bind -n S-M-Right select-pane -R
+bind -n S-M-Up select-pane -U
+bind -n S-M-Down select-pane -D
+
+# Automatically set window title
+set-window-option -g automatic-rename on
+set-option -g set-titles on
+
+bind-key r source-file ~/.tmux.conf \; display-message ".tmux.conf reloaded"

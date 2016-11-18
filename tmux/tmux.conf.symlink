@@ -1,6 +1,6 @@
 set -g utf8
 set-window-option -g utf8 on
-set status-right '#h P:#P '
+set -g status-right '#h P:#P '
 
 # shorten command delay
 set -sg escape-time 1

@@ -1,9 +1,12 @@
 set -g status-right '#{prefix_highlight} #h P:#P '
 
 # lighter status bar
-set -g status-bg "#666666"
-set -g status-fg "#aaaaaa"
-set -g status-left-length 50
+# set -g status-bg "#666666"
+# set -g status-fg "#aaaaaa"
+# set -g status-left-length 50
+
+set -g window-style 'bg=white'
+set -g window-active-style 'bg=brightwhite'
 
 # Make the current window the first window
 bind T swap-window -t 1
@@ -47,6 +50,10 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-open'
+set -g @plugin 'seebi/tmux-colors-solarized'
+
+# Plugin options
+set -g @colors-solarized 'light'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'

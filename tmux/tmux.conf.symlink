@@ -3,13 +3,19 @@ set -g status-right '#{prefix_highlight} #h P:#P '
 # lighter status bar
 # set -g status-bg "#666666"
 # set -g status-fg "#aaaaaa"
-# set -g status-left-length 50
+set -g status-left-length 50
 
 set -g window-style 'bg=white'
 set -g window-active-style 'bg=brightwhite'
 
 # Make the current window the first window
 bind T swap-window -t 1
+
+# Toggle status bar
+bind S set -g status
+
+# Synchronize panes
+bind ` set -g synchronize-panes
 
 # 0 is too far from ` ;)
 set -g base-index 1
@@ -32,10 +38,10 @@ bind -n S-Left  previous-window
 bind -n S-Right next-window
 
 # switch panes using Shift-Alt-arrow without prefix
-bind -n S-C-Left select-pane -L
-bind -n S-C-Right select-pane -R
-bind -n S-C-Up select-pane -U
-bind -n S-C-Down select-pane -D
+bind -n S-M-Left select-pane -L
+bind -n S-M-Right select-pane -R
+bind -n S-M-Up select-pane -U
+bind -n S-M-Down select-pane -D
 
 # Automatically set window title
 set-window-option -g automatic-rename on

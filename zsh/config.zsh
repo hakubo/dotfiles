@@ -47,7 +47,7 @@ bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
 
-ulimit -S -n 10200
+ulimit -S -n 4096
 
 EDITOR='vim'
 

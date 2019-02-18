@@ -21,7 +21,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(bower brew brew-cask command-not-found dircycle ember-cli git history history-substring-search httpie osx sudo)
+plugins=(command-not-found dircycle ember-cli git history history-substring-search httpie osx sudo z)
 
 # User configuration
 

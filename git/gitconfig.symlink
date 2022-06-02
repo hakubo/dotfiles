@@ -16,7 +16,7 @@
         hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
         mg = merge --no-ff
         pl = pull --rebase
-        delete-merged-branches = "!f() { git checkout --quiet master && git branch --merged | grep --invert-match '*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
+        delete-merged-branches = "!f() { git checkout --quiet integration && git branch --merged | grep --invert-match '*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
 [color]
         diff = auto
         status = auto
@@ -35,9 +35,13 @@
         autocorrect = 1
 [branch]
 	autosetuprebase = always
+	autosetupmerge = true
 [push]
         # See `git help config` (search for push.default)
         # for more information on different options of the below setting.
         #
         # Setting to git 2.0 default to suppress warning message
 	default = current
+[user]
+	name = Jakub Olek
+	email = jolek@egnyte.com

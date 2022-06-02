@@ -1,5 +1,6 @@
 # shortcut to this dotfiles path is $DOTFILES
 export DOTFILES=$HOME/.dotfiles
+export NVM_LAZY=1
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
@@ -11,7 +12,7 @@ fi
 
 # all of our zsh files
 typeset -U config_files
-config_files=($DOTFILES/**/*.zsh)
+config_files=($DOTFILES/(git|system|zsh)/*.zsh)
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
@@ -20,10 +21,10 @@ do
 done
 
 # load everything but the path, completion files and oh-my-zsh files
-for file in ${${${config_files:#*/path.zsh}:#*/completion.zsh}:#*/oh-my-zsh/*}
-do
-  source $file
-done
+ for file in ${${${config_files:#*/path.zsh}:#*/completion.zsh}:#*/oh-my-zsh/*}
+ do
+   source $file
+ done
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
@@ -37,21 +38,12 @@ done
 
 unset config_files
 
-
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/jolek/.sdkman"
-[[ -s "/Users/jolek/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/jolek/.sdkman/bin/sdkman-init.sh"
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '/Applications/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/jolek/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jolek/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '/Applications/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/jolek/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jolek/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

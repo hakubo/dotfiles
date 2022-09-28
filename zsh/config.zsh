@@ -49,7 +49,5 @@ bindkey '^?' backward-delete-char
 
 ulimit -S -n 4096
 
-EDITOR='vim'
-
 # ssh
 export SSH_KEY_PATH="~/.ssh/dsa_id"

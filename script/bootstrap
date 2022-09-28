@@ -142,7 +142,7 @@ install_oh_my_zsh() {
 
   if ! [ -f oh-my-zsh/oh-my-zsh.sh ]
   then
-    $(git clone git://github.com/robbyrussell/oh-my-zsh.git "$DOTFILES_ROOT"/oh-my-zsh)
+    $(git clone git@github.com:ohmyzsh/ohmyzsh.git "$DOTFILES_ROOT"/oh-my-zsh)
     success "installed"
   else
     info 'oh-my-zsh already installed, updating'

@@ -27,6 +27,7 @@ brew 'imagemagick'
 brew 'siege'
 brew 'nvm'
 brew 'httpie'
+brew "spaceship"
 
 cask 'firefox'
 cask 'google-chrome'
